@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_hashmicro_coffe,hashmicro_coffee.hashmicro_coffe,model_hashmicro_coffe,base.group_user,1,1,1,1
+access_pegawai,access_pegawai,model_caffe_pegawai,,1,1,1,1
+access_pesanan,access_pesanan,model_caffe_pesanan,,1,1,1,1
+access_pesanan_line,access_pesanan_line,model_caffe_pesanan_line,,1,1,1,1

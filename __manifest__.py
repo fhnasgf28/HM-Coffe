@@ -25,8 +25,10 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        # 'views/menu.xml',
+        'data/sequence.xml',
         'views/hm_coffe_views.xml',
+        'views/pegawai_views.xml',
+        'views/pesanan_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

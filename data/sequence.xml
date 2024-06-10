@@ -1,0 +1,21 @@
+<!-- caffe_module/data/ir_sequence_data.xml -->
+<odoo>
+    <data noupdate="1">
+
+        <record id="seq_caffe_pegawai" model="ir.sequence">
+            <field name="name">Pegawai Sequence</field>
+            <field name="code">caffe.pegawai</field>
+            <field name="prefix">EMP</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_caffe_pesanan" model="ir.sequence">
+            <field name="name">Pesanan Sequence</field>
+            <field name="code">caffe.pesanan</field>
+            <field name="prefix">ORD</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

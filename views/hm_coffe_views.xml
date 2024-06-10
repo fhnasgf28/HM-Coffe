@@ -87,7 +87,7 @@
 
     <menuitem id="menu_hashmicro_root"
               name="Hashmicro"
-              sequence="10"/>
+              sequence="0"/>
 
     <menuitem id="menu_hashmicro_coffee_root"
               name="Patients"

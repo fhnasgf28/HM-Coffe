@@ -1,0 +1,50 @@
+<!-- caffe_module/views/pegawai_views.xml -->
+<odoo>
+    <record id="view_pegawai_tree" model="ir.ui.view">
+        <field name="name">pegawai.tree</field>
+        <field name="model">caffe.pegawai</field>
+        <field name="arch" type="xml">
+            <tree string="Pegawai">
+                <field name="employee_id"/>
+                <field name="name"/>
+                <field name="job_position"/>
+                <field name="hire_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_pegawai_form" model="ir.ui.view">
+        <field name="name">pegawai.form</field>
+        <field name="model">caffe.pegawai</field>
+        <field name="arch" type="xml">
+            <form string="Pegawai">
+                <group>
+                    <field name="employee_id" readonly="1"/>
+                    <field name="name"/>
+                    <field name="job_position"/>
+                    <field name="date_of_birth"/>
+                    <field name="hire_date"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_pegawai" model="ir.actions.act_window">
+        <field name="name">Pegawai</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">caffe.pegawai</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first patient!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_pegawai" name="Pegawai" parent="menu_hashmicro_root" sequence="1"/>
+    <menuitem id="submenu_pegawai" name="Data Pegawai" parent="menu_pegawai" action="action_pegawai"/>
+</odoo>
