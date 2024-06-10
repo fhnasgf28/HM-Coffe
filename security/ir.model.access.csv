@@ -3,3 +3,9 @@ access_hashmicro_coffe,hashmicro_coffee.hashmicro_coffe,model_hashmicro_coffe,ba
 access_pegawai,access_pegawai,model_caffe_pegawai,,1,1,1,1
 access_pesanan,access_pesanan,model_caffe_pesanan,,1,1,1,1
 access_pesanan_line,access_pesanan_line,model_caffe_pesanan_line,,1,1,1,1
+
+access_produk,caffe_module.access_produk,model_caffe_produk,,1,1,1,1
+access_produk_category,caffe_module.access_produk_category,model_caffe_produk_category,,1,1,1,1
+access_loyalty,caffe_module.access_loyalty,model_caffe_loyalty,,1,1,1,1
+access_reservasi,caffe_module.access_reservasi,model_caffe_reservasi,,1,1,1,1
+access_sale_report,caffe_module.access_sale_report,model_caffe_sale_report,,1,0,0,0

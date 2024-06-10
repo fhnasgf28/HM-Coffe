@@ -29,6 +29,10 @@
         'views/hm_coffe_views.xml',
         'views/pegawai_views.xml',
         'views/pesanan_views.xml',
+        'views/report/report_views.xml',
+        'views/product/product_views.xml',
+        'views/loyalitas_pelanggan_views.xml',
+        'views/reservasi_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

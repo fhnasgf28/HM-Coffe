@@ -1,0 +1,48 @@
+<!-- caffe_module/views/reservasi_views.xml -->
+<odoo>
+    <record id="view_reservasi_tree" model="ir.ui.view">
+        <field name="name">reservasi.tree</field>
+        <field name="model">caffe.reservasi</field>
+        <field name="arch" type="xml">
+            <tree string="Reservasi">
+                <field name="customer_name"/>
+                <field name="reservation_date"/>
+                <field name="table_number"/>
+                <field name="number_of_people"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_reservasi_form" model="ir.ui.view">
+        <field name="name">reservasi.form</field>
+        <field name="model">caffe.reservasi</field>
+        <field name="arch" type="xml">
+            <form string="Reservasi">
+                <group>
+                    <field name="customer_name"/>
+                    <field name="reservation_date"/>
+                    <field name="table_number"/>
+                    <field name="number_of_people"/>
+                    <field name="status"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_reservasi" model="ir.actions.act_window">
+        <field name="name">Reservasi</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">caffe.reservasi</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first patient!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_reservasi" name="Reservasi" parent="menu_hashmicro_root" sequence="6"/>
+    <menuitem id="submenu_reservasi" name="Data Reservasi" parent="menu_reservasi" action="action_reservasi"/>
+</odoo>

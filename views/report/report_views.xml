@@ -1,0 +1,32 @@
+<!-- caffe_module/views/report_views.xml -->
+<odoo>
+    <record id="view_sale_report_form" model="ir.ui.view">
+        <field name="name">sale.report.form</field>
+        <field name="model">caffe.sale.report</field>
+        <field name="arch" type="xml">
+            <form string="Laporan Penjualan">
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="total_sales"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sale_report" model="ir.actions.act_window">
+        <field name="name">Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">caffe.sale.report</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first patient!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_report" name="Laporan" parent="menu_hashmicro_root" sequence="4"/>
+    <menuitem id="submenu_sale_report" name="Laporan Penjualan" parent="menu_report" action="action_sale_report"/>
+</odoo>
