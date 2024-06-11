@@ -1,0 +1,48 @@
+<!-- caffe_module/views/performance_review_views.xml -->
+<odoo>
+    <record id="view_performance_review_tree" model="ir.ui.view">
+        <field name="name">performance_review.tree</field>
+        <field name="model">caffe.performance_review</field>
+        <field name="arch" type="xml">
+            <tree string="Evaluasi Kinerja">
+                <field name="employee_id"/>
+                <field name="date"/>
+                <field name="reviewer_id"/>
+                <field name="rating"/>
+                <field name="comments"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_performance_review_form" model="ir.ui.view">
+        <field name="name">performance_review.form</field>
+        <field name="model">caffe.performance_review</field>
+        <field name="arch" type="xml">
+            <form string="Evaluasi Kinerja">
+                <group>
+                    <field name="employee_id"/>
+                    <field name="date"/>
+                    <field name="reviewer_id"/>
+                    <field name="rating"/>
+                    <field name="comments"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_performance_review" model="ir.actions.act_window">
+        <field name="name">Performance Review</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">caffe.performance_review</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first patient!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_performance_review" name="Evaluasi Kinerja" sequence="4" parent="menu_pegawai"/>
+    <menuitem id="submenu_performance_review" name="Data Evaluasi Kinerja" parent="menu_performance_review" action="action_performance_review"/>
+</odoo>

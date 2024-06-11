@@ -33,6 +33,7 @@
         'views/product/product_views.xml',
         'views/loyalitas_pelanggan_views.xml',
         'views/payroll_views.xml',
+        'views/performance_review_view.xml',
         'views/shift_views.xml',
         'views/leave_views.xml',
         'views/reservasi_views.xml',

@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 class Shift(models.Model):
@@ -11,5 +11,15 @@ class Shift(models.Model):
     end_time = fields.Datetime(string='Waktu Selesai', required=True)
     duration = fields.Float(string='Durasi (Jam)', compute='_compute_duration', store=True)
 
+    @api.depends('start_time', 'end_time')
     def _compute_duration(self):
-        pass
+        for shift in self:
+            if shift.start_time and shift.end_time:
+                delta = shift.end_time - shift.start_time
+                shift.duration = delta.total_seconds() / 3600
+
+    @api.constrains('start_time', 'end_time')
+    def check_shift_time(self):
+        for shift in self:
+            if shift.start_time >= shift.end_time:
+                raise ValidationError(_("Waktu Mulai Harus Lebih Kecil Dari Waktu Selesai"))

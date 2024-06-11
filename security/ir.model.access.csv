@@ -11,4 +11,5 @@ access_reservasi,caffe_module.access_reservasi,model_caffe_reservasi,,1,1,1,1
 access_shift,caffe_module.access_shift,model_caffe_shift,,1,1,1,1
 access_payroll,caffe_module.access_payroll,model_caffe_payroll,,1,1,1,1
 access_leave,caffe_module.access_leave,model_caffe_leave,,1,1,1,1
+access_caffe.performance_review,caffe_module.caffe.performance_review,model_caffe_performance_review,,1,1,1,1
 access_sale_report,caffe_module.access_sale_report,model_caffe_sale_report,,1,0,0,0
