@@ -19,10 +19,10 @@
         <field name="name">produk.form</field>
         <field name="model">caffe.produk</field>
         <field name="arch" type="xml">
-            <header>
-                <button string="Periksa Stok" type="object" name="check_and_order_stock" class="oe_highlight"/>
-            </header>
             <form string="Produk">
+                <header>
+                <button string="Periksa Stok" type="object" name="check_and_order_stock" class="oe_highlight"/>
+                </header>
                 <group>
                     <field name="name"/>
                     <field name="category_id"/>
