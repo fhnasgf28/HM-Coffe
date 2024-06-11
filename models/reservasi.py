@@ -14,6 +14,6 @@ class Reservasi(models.Model):
 
     @api.model
     def create(self, vals):
-        if self.search([('table_number', '=', vals['table_number']), ('reservation_date', '=', vals['reservation_date']), ('status', '=', 'reserved')]):
+        if self.search([('table_number', '=', vals['table_number']), ('status', '=', 'reserved')]):
             raise ValidationError('Meja ini sudah dipesan pada waktu tersebut.')
         return super(Reservasi, self).create(vals)

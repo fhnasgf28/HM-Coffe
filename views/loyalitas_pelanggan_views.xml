@@ -4,7 +4,7 @@
         <field name="name">loyalty.tree</field>
         <field name="model">caffe.loyalty</field>
         <field name="arch" type="xml">
-            <tree string="Loyalitas Pelanggan">
+            <tree string="Loyalitas Pelanggan" editable="bottom">
                 <field name="customer_name"/>
                 <field name="points"/>
             </tree>

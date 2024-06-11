@@ -19,6 +19,7 @@ class Pegawai(models.Model):
     phone = fields.Char(string='Telepon')
     email = fields.Char(string='Email')
     address = fields.Text(string='Alamat')
+    image = fields.Binary(string='Foto')
 
     @api.model
     def create(self, vals):

@@ -19,6 +19,9 @@
         <field name="model">caffe.pesanan</field>
         <field name="arch" type="xml">
             <form string="Pesanan">
+                <header>
+                    <button string="Konfirmasi" type="object" name="action_confirm" class="oe_highlight"/>
+                </header>
                 <group>
                     <field name="name" readonly="1"/>
                     <field name="customer_name"/>
@@ -26,8 +29,8 @@
                     <field name="total_amount"/>
                     <field name="waiter_id"/>
                     <field name="order_line_ids">
-                        <tree string="Detail Pesanan">
-                            <field name="product_name"/>
+                        <tree string="Detail Pesanan" editable="bottom">
+                            <field name="product_name_id"/>
                             <field name="quantity"/>
                             <field name="price_unit"/>
                             <field name="subtotal"/>

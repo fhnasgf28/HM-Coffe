@@ -45,6 +45,6 @@
         </field>
     </record>
 
-    <menuitem id="menu_pegawai" name="Pegawai" parent="menu_hashmicro_root" sequence="1"/>
+    <menuitem id="menu_pegawai" name="Pegawai" parent="menu_hashmicro_root" sequence="10"/>
     <menuitem id="submenu_pegawai" name="Data Pegawai" parent="menu_pegawai" action="action_pegawai"/>
 </odoo>

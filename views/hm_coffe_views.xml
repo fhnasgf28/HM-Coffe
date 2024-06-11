@@ -40,7 +40,7 @@
                     </group>
                 </sheet>
                 <div class="oe_chatter">
-                        <field name="message_follower_ids" groups="base.groups_user"/>
+                        <field name="message_follower_ids"/>
                         <field name="activity_ids"/>
                         <field name="message_ids"/>
                     </div>
@@ -66,11 +66,6 @@
         </field>
     </record>
 
-          <!-- Menu item untuk produk hashmicro -->
-<!--      <menuitem id="menu_hashmicro_coffee"-->
-<!--              name="hashmicro"-->
-<!--              parent="menu_hashmicro_root"-->
-<!--              action="action_hashmicro_coffe"/>-->
 
       <record id="action_hashmicro_coffee" model="ir.actions.act_window">
         <field name="name">Hashmicro</field>
@@ -89,16 +84,11 @@
               name="Hashmicro"
               sequence="0"/>
 
-    <menuitem id="menu_hashmicro_coffee_root"
-              name="Patients"
-              parent="menu_hashmicro_root"
-              sequence="10"/>
-
     <menuitem id="menu_coffe"
-              name="Hashmicro Coffee"
+              name="Vendor Product"
               parent="menu_hashmicro_root"
               action="action_hashmicro_coffee"
-              sequence="10"/>
+              sequence="2"/>
 
   </data>
 </odoo>
