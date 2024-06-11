@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','product', 'stock', 'purchase', 'account', 'sale','mail'],
+    'depends': ['base','product', 'stock', 'purchase', 'account', 'sale','mail','hr'],
 
     # always loaded
     'data': [
@@ -32,6 +32,9 @@
         'views/report/report_views.xml',
         'views/product/product_views.xml',
         'views/loyalitas_pelanggan_views.xml',
+        'views/payroll_views.xml',
+        'views/shift_views.xml',
+        'views/leave_views.xml',
         'views/reservasi_views.xml',
     ],
     # only loaded in demonstration mode

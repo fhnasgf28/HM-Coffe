@@ -19,15 +19,21 @@
         <field name="arch" type="xml">
             <form string="Pegawai">
                 <group>
-                    <field name="employee_id" readonly="1"/>
-                    <field name="name"/>
-                    <field name="job_position"/>
-                    <field name="date_of_birth"/>
-                    <field name="hire_date"/>
-                    <field name="phone"/>
-                    <field name="email"/>
-                    <field name="address"/>
+                    <group>
+                        <field name="employee_id" readonly="1"/>
+                        <field name="name"/>
+                        <field name="job_position"/>
+                        <field name="date_of_birth"/>
+                    </group>
+                    <group>
+                        <field name="hire_date"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="address"/>
+                    </group>
                 </group>
+                <field name="shift_ids"/>
+                <field name="leave_ids"/>
             </form>
         </field>
     </record>

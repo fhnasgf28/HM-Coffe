@@ -8,4 +8,7 @@ access_produk,caffe_module.access_produk,model_caffe_produk,,1,1,1,1
 access_produk_category,caffe_module.access_produk_category,model_caffe_produk_category,,1,1,1,1
 access_loyalty,caffe_module.access_loyalty,model_caffe_loyalty,,1,1,1,1
 access_reservasi,caffe_module.access_reservasi,model_caffe_reservasi,,1,1,1,1
+access_shift,caffe_module.access_shift,model_caffe_shift,,1,1,1,1
+access_payroll,caffe_module.access_payroll,model_caffe_payroll,,1,1,1,1
+access_leave,caffe_module.access_leave,model_caffe_leave,,1,1,1,1
 access_sale_report,caffe_module.access_sale_report,model_caffe_sale_report,,1,0,0,0
