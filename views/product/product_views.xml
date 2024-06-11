@@ -9,6 +9,8 @@
                 <field name="category_id"/>
                 <field name="price"/>
                 <field name="stock"/>
+                <field name="low_stock_threshold"/>
+                <field name="supplier_id"/>
             </tree>
         </field>
     </record>
@@ -17,12 +19,17 @@
         <field name="name">produk.form</field>
         <field name="model">caffe.produk</field>
         <field name="arch" type="xml">
+            <header>
+                <button string="Periksa Stok" type="object" name="check_and_order_stock" class="oe_highlight"/>
+            </header>
             <form string="Produk">
                 <group>
                     <field name="name"/>
                     <field name="category_id"/>
                     <field name="price"/>
                     <field name="stock"/>
+                    <field name="low_stock_threshold"/>
+                    <field name="supplier_id"/>
                 </group>
             </form>
         </field>

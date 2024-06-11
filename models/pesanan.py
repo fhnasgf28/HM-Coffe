@@ -1,19 +1,23 @@
 # caffe_module/models/pesanan.py
 
 from odoo import models, fields, api
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
+
 
 class Pesanan(models.Model):
     _name = 'caffe.pesanan'
     _description = 'Data Pesanan Pelanggan'
 
-    name = fields.Char(string='Kode Pesanan', required=True, copy=False, readonly=True, index=True, default=lambda self: ('New'))
+    name = fields.Char(string='Kode Pesanan', required=True, copy=False, readonly=True, index=True,
+                       default=lambda self: ('New'))
     customer_name = fields.Char(string='Nama Pelanggan', required=True)
     order_date = fields.Datetime(string='Tanggal Pesanan', default=fields.Datetime.now)
-    total_amount = fields.Float(string='Jumlah Total', required=True)
+    total_amount = fields.Float(string='Jumlah Total', required=True, compute='_compute_total_amount')
     order_line_ids = fields.One2many('caffe.pesanan.line', 'order_id', string='Detail Pesanan')
-    waiter_id = fields.Many2one('caffe.pegawai', string='Pelayan', domain=[('job_position', '=', 'waiter')], required=True)
+    waiter_id = fields.Many2one('caffe.pegawai', string='Pelayan', domain=[('job_position', '=', 'waiter')],
+                                required=True)
     invoice_id = fields.Many2one('account.move', string='faktur', readonly=True)
+
     @api.model
     def create(self, vals):
         if vals.get('name', ('New')) == ('New'):
@@ -38,6 +42,10 @@ class Pesanan(models.Model):
             invoice = self.env['account.move'].create(invoice_vals)
             order.invoice_id = invoice.id
 
+    @api.depends('order_line_ids.subtotal')
+    def _compute_total_amount(self):
+        for order in self:
+            order.total_amount = sum(line.subtotal for line in order.order_line_ids)
 
 
 class PesananLine(models.Model):
@@ -50,7 +58,6 @@ class PesananLine(models.Model):
     price_unit = fields.Float(string='Harga Satuan', required=True)
     subtotal = fields.Float(string='Subtotal', compute='_compute_subtotal', store=True)
 
-
     @api.depends('quantity', 'price_unit')
     def _compute_subtotal(self):
         for line in self:
@@ -61,3 +68,11 @@ class PesananLine(models.Model):
         for line in self:
             line.product_id.stock += line.quantity
         return super(PesananLine, self).unlink()
+
+    # @api.model
+    # def create(self, vals):
+    #     product = self.env['caffe.product'].browse(vals['product_id'])
+    #     if product.stock > vals['quantity']:
+    #         raise ValidationError('Stok tidak mencukupi untuk produk: %s' % product.name)
+    #     product.stock -= vals['quantity']
+    #     return super(PesananLine, self).create(vals)
