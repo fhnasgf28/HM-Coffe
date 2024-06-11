@@ -16,7 +16,18 @@ class Produk(models.Model):
     def check_and_order_stock(self):
         print('method ini diklik')
         for product in self:
-            if product.stock < product.low_stock_threshold:
+            if product.stock > 10:
+                return{
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': 'Stock Notification',
+                        'message': f'The Product {product.name} has more than 10 in stock',
+                        'type': 'info',
+                        'sticky': False
+                    }
+                }
+            elif product.stock < product.low_stock_threshold:
                 self._create_purchase_order(product)
 
     def _create_purchase_order(self, product):

@@ -7,6 +7,8 @@ from odoo.exceptions import UserError, ValidationError
 class Pesanan(models.Model):
     _name = 'caffe.pesanan'
     _description = 'Data Pesanan Pelanggan'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _order = 'name desc'
 
     name = fields.Char(string='Kode Pesanan', required=True, copy=False, readonly=True, index=True,
                        default=lambda self: ('New'))

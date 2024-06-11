@@ -22,6 +22,7 @@
                 <header>
                     <button string="Konfirmasi" type="object" name="action_confirm" class="oe_highlight"/>
                 </header>
+                <sheet>
                 <group>
                     <field name="name" readonly="1"/>
                     <field name="customer_name"/>
@@ -37,6 +38,12 @@
                         </tree>
                     </field>
                 </group>
+                </sheet>
+                <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
             </form>
         </field>
     </record>

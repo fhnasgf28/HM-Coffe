@@ -6,6 +6,8 @@ from odoo import models, fields, api
 class Pegawai(models.Model):
     _name = 'caffe.pegawai'
     _description = 'Data Pegawai Kafe'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _order = 'name desc'
 
     name = fields.Char(string='Nama', required=True)
     employee_id = fields.Char(string='ID Pegawai', required=True, copy=False, readonly=True, index=True,
