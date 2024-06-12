@@ -28,6 +28,10 @@ class Pegawai(models.Model):
     address = fields.Text(string='Alamat')
     image = fields.Binary(string='Foto')
 
+    _sql_constraints = [
+        ('unique_employee_id_name', 'UNIQUE(name)', 'names must be unique')
+    ]
+
     @api.model
     def create(self, vals):
         if vals.get('employee_id', ('New')) == ('New'):

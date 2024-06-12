@@ -19,6 +19,12 @@ class Pesanan(models.Model):
     waiter_id = fields.Many2one('caffe.pegawai', string='Pelayan', domain=[('job_position', '=', 'waiter')],
                                 required=True)
     invoice_id = fields.Many2one('account.move', string='faktur', readonly=True)
+    delivery_status = fields.Selection([
+        ('pending', 'Pending'),
+        ('in_progress', 'In Progress'),
+        ('delivered', 'Delivered'),
+        ('cancelled', 'Cancelled')
+    ], string='Status', default='pending')
 
     @api.model
     def create(self, vals):
@@ -27,16 +33,25 @@ class Pesanan(models.Model):
         result = super(Pesanan, self).create(vals)
         return result
 
+    def button_confirm(self):
+        self.delivery_status = 'delivered'
+        self.env.cr.commit()
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'reload',
+        }
+
     def action_confirm(self):
         for order in self:
             if order.invoice_id:
                 raise UserError('faktur ini sudah dibuat')
             invoice_vals = {
                 'move_type': 'out_invoice',
-                'partner_id': self.env['res.partner'].search([('name', '=', order.customer_name)], limit=1).id,
+                'partner_id': self.env['caffe.pesanan'].search([('customer_name', '=', order.customer_name)], limit=1).id,
                 'invoice_date': fields.Date.today(),
                 'invoice_line_ids': [(0, 0, {
                     'product_id': line.product_name_id.id,
+                    'name': line.product_name_id.name,
                     'quantity': line.quantity,
                     'price_unit': line.price_unit,
                 }) for line in order.order_line_ids]

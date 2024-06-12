@@ -7,15 +7,16 @@
         <field name="arch" type="xml">
             <form string="hashmicro coffe">
                 <header>
-                    <button name="action_confirm" type="object" string="Confirm" class="oe_highlight"/>
-                    <button name="action_done" type="object" string="Done" class="oe_highlight"/>
-                    <button name="action_draft" type="object" string="Set to Draft" />
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,cancel,done"/>
+                    <button name="action_confirm" type="object" string="Confirm" states="draft" class="oe_highlight"/>
+                    <button name="action_cancel" type="object" string="Cancel" states="draft,confirmed"/>
+                    <button name="action_done" type="object" string="Done" states="confirmed" class="oe_highlight"/>
+                    <button name="action_draft" type="object" string="Set to Draft" states="cancel,done"/>
                     <button name="action_send_whatsapp" icon="fa-whatsapp" string="Send By Whatsapp" type="object" class="oe_stat_button" style="background-color: #008000; color:white"/>
                     <button name="action_refresh_price"
                             string="Refresh Price"
                             type="object"
                          />
-                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
                 </header>
                 <sheet>
                         <div class="oe_title">
@@ -59,7 +60,10 @@
                 <field name="name" string="Reference"/>
                 <field name="user_id"/>
                 <field name="category"/>
-                <field name="state" widget="badge"/>
+                <field name="state" widget="badge" decoration-danger="state == 'cancel'"
+                      decoration-muted="state == 'draft'"
+                      decoration-success="state == 'done'"
+                      decoration-info="state == 'confirmed'"/>
                 <button type="object" class="btn-primary"
                         name="action_whatsapp_multi" icon="fa-whatsapp" string="Send by Whatsapp"/>
             </tree>

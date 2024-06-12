@@ -8,15 +8,15 @@ class HashmicroProduct(models.Model):
     _description = 'hasmicro coffe'
 
     PRODUCTFAZ_SELECTION = [
-        ('consumable', 'Consumable'),
-        ('service', 'Service'),
-        ('storable', 'Storable Product'),
+        ('coffe_arabica', 'Kopi Arabika'),
+        ('coffe_robusta', 'Kopi Robusta'),
+        ('coffe_liberika', 'Kopi Liberika'),
     ]
 
     name = fields.Char(string='hashmicro', default=lambda self: _('New'), copy=False, readonly=True, tracking=True,
                        index=True)
     partner_id = fields.Many2one('res.partner', string='Vendor')
-    category = fields.Selection(PRODUCTFAZ_SELECTION, string='Category', default='consumable')
+    category = fields.Selection(PRODUCTFAZ_SELECTION, string='Category', default='coffe_arabica')
     description = fields.Char(string='Descriptions')
     order_deadline = fields.Datetime(string='Order Deadline', default=fields.Datetime.now())
     product_names = fields.Char(string='Product Names')
@@ -31,20 +31,23 @@ class HashmicroProduct(models.Model):
         ('confirmed', 'Confirmed'),
         ('cancel', 'canceled'),
         ('done', 'Done'),
-    ], string='Status', readonly=True, default='draft')
+    ], string='Status', default='draft')
     phone = fields.Char(string="Phone", default=62)
 
     def action_refresh_price(self):
         pass
 
     def action_confirm(self):
-        pass
+        self.write({'state': 'confirmed'})
 
-    def action_draft(self):
-        pass
+    def action_cancel(self):
+        self.write({'state': 'cancel'})
 
     def action_done(self):
-        pass
+        self.write({'state': 'done'})
+
+    def action_draft(self):
+        self.write({'state': 'draft'})
 
     def action_send_whatsapp(self):
         pass

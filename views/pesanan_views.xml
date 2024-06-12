@@ -10,6 +10,10 @@
                 <field name="order_date"/>
                 <field name="total_amount"/>
                 <field name="waiter_id"/>
+                <field name="delivery_status" decoration-danger="delivery_status == 'cancelled'"
+                      decoration-muted="delivery_status == 'in_progress'"
+                      decoration-success="delivery_status == 'delivered'"
+                      decoration-info="delivery_status == 'pending'" widget="badge"/>
             </tree>
         </field>
     </record>
@@ -21,6 +25,8 @@
             <form string="Pesanan">
                 <header>
                     <button string="Konfirmasi" type="object" name="action_confirm" class="oe_highlight"/>
+                    <button name="button_confirm" type="object" string="Confirm" class="btn-primary"/>
+                    <field name="delivery_status" widget="statusbar" statusbar_visible="pending,in_progress,delivered,cancelled"/>
                 </header>
                 <sheet>
                 <group>
