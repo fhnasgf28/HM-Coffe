@@ -8,6 +8,7 @@ class Produk(models.Model):
 
     name = fields.Char(string='Nama Produk', required=True)
     category_id = fields.Many2one('caffe.produk.category', string='Kategori', required=True)
+    product_id = fields.Many2one('hashmicro.coffe', string='Kategori',ondelete='cascade')
     price = fields.Float(string='Harga', required=True)
     low_stock_threshold = fields.Integer(string='Ambang Batas Stok Rendah', default=10)
     stock = fields.Integer(string='Stok', required=True)
@@ -50,3 +51,7 @@ class ProdukCategory(models.Model):
 
     name = fields.Char(string='Nama Kategori', required=True)
     product_ids = fields.One2many('caffe.produk', 'category_id', string='Produk')
+
+    def unlink(self):
+        if self.detailpembelian_ids:
+            a = []

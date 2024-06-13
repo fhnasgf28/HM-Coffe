@@ -39,6 +39,18 @@
                             <field name="state"/>
                           </group>
                     </group>
+                    <notebook>
+                        <page string="Order Lines">
+                            <field name="product_line_ids" widget="one2many" editable="bottom">
+                                <tree string="Order Lines" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="category_id" options="{'no_create':'1', 'no_create_edit':'1'}"/>
+                                    <field name="price"/>
+                                    <field name="stock"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="oe_chatter">
                         <field name="message_follower_ids"/>

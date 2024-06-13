@@ -64,6 +64,39 @@ class Pesanan(models.Model):
         for order in self:
             order.total_amount = sum(line.subtotal for line in order.order_line_ids)
 
+#     create, write, unlink
+    @api.model
+    def create(self, vals):
+        new_order = self.env[''].create({
+            'name': 'fahan',
+            'date_order': fields.Datetime.now(),
+            'order_line_ids': [
+                (0,0, {'product_id': 1, 'quantity': 2}),
+                (0,0, {'product_id': 2, 'quantity': 1}),
+            ]
+        })
+        record = super(Pesanan, self).create(vals)
+        print(f"{record.customer_name} created with {len(record.order_line_ids)} lines")
+        return record
+    #write
+    def write(self, vals):
+        order = self.env['farhan.com'].browse(1)
+        order.write({
+            'order_line_ids': [
+                (1,1, {'quantity': 3}), #update existing line
+            ]
+        })
+        res = super(Pesanan, self).write(vals)
+        #tidak ada logika tambahan terlebih dhulu
+        print(f"Order {self.name} updated")
+        return res
+
+    def unlink(self):
+        for record in self:
+            print(f"order {record.name} is being deleted")
+        res = super(Pesanan).unlink()
+        return res
+
 
 class PesananLine(models.Model):
     _name = 'caffe.pesanan.line'

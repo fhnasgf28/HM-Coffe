@@ -21,6 +21,7 @@ class HashmicroProduct(models.Model):
     order_deadline = fields.Datetime(string='Order Deadline', default=fields.Datetime.now())
     product_names = fields.Char(string='Product Names')
     user_id = fields.Many2one('res.users', string='User', index=True)
+    product_line_ids = fields.One2many('caffe.produk', 'product_id', string='Detail Pesanan')
     uom_qty = fields.Float(string="Quantity", default=1,
                            help="The quantity converted into the UoM used by "
                                 "the product")
@@ -55,4 +56,9 @@ class HashmicroProduct(models.Model):
     def action_whatsapp_multi(self):
         pass
 
+    @api.constrains('uom_qty')
+    def quantity_constrains(self):
+        for quantity in self:
+            if quantity.uom_qty < 0:
+                raise ValidationError(_('quantity cannot be Negative'))
 
