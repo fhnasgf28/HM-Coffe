@@ -16,6 +16,13 @@
             <field name="prefix">ORD</field>
             <field name="padding">4</field>
             <field name="company_id" eval="False"/>
+
+        </record><record id="seq_caffe_pembelian" model="ir.sequence">
+            <field name="name">Pembelian Sequence</field>
+            <field name="code">hashmicro.coffe</field>
+            <field name="prefix">PR</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
         </record>
     </data>
 </odoo>

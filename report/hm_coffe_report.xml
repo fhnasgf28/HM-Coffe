@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="report_penjualan_pdf1" model="ir.actions.report">
+        <field name="name">Print Laporan Penjualan</field>
+        <field name="model">caffe.pesanan</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">HM-Coffe.report_penjualan_template_pdf</field>
+        <field name="report_file">HM-Coffe.report_penjualan_template_pdf</field>
+        <field name="binding_model_id" ref="model_caffe_pesanan"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

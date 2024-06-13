@@ -26,6 +26,8 @@
     'data': [
         'security/ir.model.access.csv',
         'data/sequence.xml',
+        'report/hm_coffe_report.xml',
+        'report/report_penjualan_template_pdf.xml',
         'views/hm_coffe_views.xml',
         'views/pegawai_views.xml',
         'views/pesanan_views.xml',

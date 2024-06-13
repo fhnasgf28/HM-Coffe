@@ -4,6 +4,7 @@ from odoo import models, fields, api
 
 class CustomerLoyalty(models.Model):
     _name = 'caffe.loyalty'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Loyalitas Pelanggan'
 
     customer_name = fields.Char(string='Nama Pelanggan', required=True)

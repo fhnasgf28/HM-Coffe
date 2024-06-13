@@ -5,6 +5,7 @@ from odoo.exceptions import ValidationError
 
 class Leave(models.Model):
     _name = 'caffe.leave'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Cuti Pegawai'
 
     name = fields.Char(string='Nama Cuti', required=True)

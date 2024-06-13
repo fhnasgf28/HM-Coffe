@@ -62,3 +62,9 @@ class HashmicroProduct(models.Model):
             if quantity.uom_qty < 0:
                 raise ValidationError(_('quantity cannot be Negative'))
 
+    @api.model
+    def create(self, vals):
+        if vals.get('name', ('New')) == ('New'):
+            vals['name'] = self.env['ir.sequence'].next_by_code('hashmicro.coffe') or ('New')
+        result = super(HashmicroProduct, self).create(vals)
+        return result
