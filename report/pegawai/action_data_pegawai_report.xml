@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="report_data_pegawai" model="ir.actions.report">
+        <field name="name">Print Data Pegawai</field>
+        <field name="model">caffe.pegawai</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">HM-Coffe.report_data_pegawai_template_pdf</field>
+        <field name="report_file">HM-Coffe.report_data_pegawai_template_pdf</field>
+        <field name="binding_model_id" ref="model_caffe_pegawai"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
