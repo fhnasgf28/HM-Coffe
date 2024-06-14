@@ -2,10 +2,9 @@
   <br>
     <a href="[[https://softworks.nibble.co.id](https://www.hashmicro.com/id/)](https://www.hashmicro.com/id/)/">
     <img src="https://www.hashmicro.com/id/blog/wp-content/uploads/2023/03/Logo_HashMicro-1-1.png" alt="Hashmicro" width="200"></a>
-  <br>Tes Orderfraz <br>
+  <br>Hashmicro Coffe <br>
 </h1>
-<h2>Hashmicro Coffe
-</h2>
+
 
 [//]: # (addons)
 
