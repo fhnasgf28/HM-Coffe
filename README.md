@@ -16,5 +16,4 @@ addon | version | maintainers | summary
 [Hashmicro Coffe](HM-Coffe/) | 17.0.1.0.0 | [![Orderfraz](https://www.hashmicro.com/id/blog/wp-content/uploads/2023/03/Logo_HashMicro-1-1.png)](https://github.com/fhnasgf28)
 
 <h2>Original Repository</h2>
-<a href="[[https://github.com/fhnasgf28/HM-Coffe.git](https://github.com/fhnasgf28/HM-Coffe.git)](https://github.com/fhnasgf28/HM-Coffe.git)/">
-[//]: # (end addons)
+https://github.com/fhnasgf28/HM-Coffe.git
