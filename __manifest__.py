@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': "HM-coffee",
 
@@ -28,12 +27,14 @@
         'data/sequence.xml',
         'report/hm_coffe_report.xml',
         'report/report_penjualan_template_pdf.xml',
+        'views/wizard/generate_payslip_wizard.xml',
         'report/pegawai/action_data_pegawai_report.xml',
         'report/pegawai/report_pegawai_template.xml',
         'views/hm_coffe_views.xml',
         'views/pegawai_views.xml',
         'views/pesanan_views.xml',
         'views/report/report_views.xml',
+        'report/payslip/report_payslip.xml',
         'views/product/product_views.xml',
         'views/loyalitas_pelanggan_views.xml',
         'views/payroll_views.xml',
@@ -51,3 +52,4 @@
     'application': True,
     'auto_install': False,
 }
+# -*- coding: utf-8 -*-

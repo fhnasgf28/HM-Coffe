@@ -15,3 +15,4 @@ access_caffe.performance_review,caffe_module.caffe.performance_review,model_caff
 access_sale_report,caffe_module.access_sale_report,model_caffe_sale_report,,1,0,0,0
 
 access_payslip,access_payslip,model_payslip,base.group_user,1,1,1,1
+access_generate_payslip_wizard,access_generate_payslip_wizard,model_generate_payslip_wizard,,1,1,1,1

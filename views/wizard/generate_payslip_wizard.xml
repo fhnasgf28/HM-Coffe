@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="generate_payslip_wizard_form_view" model="ir.ui.view">
+            <field name="name">generate.payslip.wizard.form</field>
+            <field name="model">generate.payslip.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="payroll_id" invisible="1"/>
+                        <field name="period"/>
+                        <field name="available_days_of_work"/>
+                        <field name="type"/>
+                        <field name="employee_ids" widget="many2many_tags" attrs="{'invisible': [('type', '=', 'all')], 'required': [('type', '!=', 'all')]}"/>
+                    </group>
+                    <footer>
+                        <button id="confirm" name="confirm" string="Confirm" type="object" class="btn-primary" />
+                        <button string="Cancel" class="btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

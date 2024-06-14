@@ -1,5 +1,6 @@
 from odoo import models, fields, api, _
 
+
 class Payroll(models.Model):
     _name = 'caffe.payroll'
     _description = 'Penggajian Pegawai'
@@ -23,7 +24,7 @@ class Payroll(models.Model):
     company_id = fields.Many2one("res.company", string="Company", default=lambda self: self.env.company, required=1)
     currency_id = fields.Many2one(related='company_id.currency_id', depends=["company_id"], store=1,
                                   ondelete="restrict")
-    available_days_of_work = fields.Integer(string="Jumlah Masuk")
+    available_days_of_work = fields.Integer(string="Jumlah Masuk",)
     from_date = fields.Date(required=1)
     to_date = fields.Date(required=1)
 
@@ -42,17 +43,25 @@ class Payroll(models.Model):
         for payroll in self:
             payroll.total_salary = payroll.total_hours * payroll.hourly_rate
 
-#     new
+    #     new
     def get_amount(self):
         pass
-    def _get_period(self):
 
+    def _get_period(self):
         pass
+
     def confirm(self):
-        pass
+        self.state = 'confirm'
 
     def generate_payslip(self):
-        pass
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Generate Payslip Wizard"),
+            "res_model": "generate.payslip.wizard",
+            "view_mode": "form",
+            "target": "new",
+            "context": {},
+        }
 
 class Payslip(models.Model):
     _name = 'payslip'
@@ -78,14 +87,16 @@ class Payslip(models.Model):
     overtime = fields.Monetary(currency_field='currency_id')
     incentive = fields.Monetary(currency_field='currency_id')
     other_deduction = fields.Monetary(currency_field='currency_id')
-    gross_salary = fields.Monetary(string='Gross Salary', compute='_get_thp', currency_field='currency_id')
-    thp = fields.Monetary(string='THP', compute='_get_thp', currency_field='currency_id')
+    gross_salary = fields.Monetary(string='Gross Salary', currency_field='currency_id')
+    thp = fields.Monetary(string='THP', currency_field='currency_id')
     company_id = fields.Many2one("res.company", string="Company", default=lambda self: self.env.company, required=1)
-    currency_id = fields.Many2one(related='company_id.currency_id', depends=["company_id"], store=1, ondelete="restrict")
+    currency_id = fields.Many2one(related='company_id.currency_id', depends=["company_id"], store=1,
+                                  ondelete="restrict")
     available_days_of_work = fields.Integer(string="Jumlah Masuk")
 
     def _get_thp(self):
         pass
 
     def print(self):
-       pass
+        print('method ini diklik')
+        return self.env.ref('HM-Coffe.action_payslip_report_farhan').report_action(self, data=None)
