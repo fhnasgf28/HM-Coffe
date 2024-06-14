@@ -16,7 +16,6 @@
             <field name="header_line" eval="False"/>
             <field name="header_spacing">25</field>
             <field name="dpi">90</field>
-
         </record>
     <template id="report_data_pegawai_template_pdf">
         <t t-call="web.html_container">
@@ -74,7 +73,7 @@
                                     <strong>Nama:</strong> <span t-esc="o.name"/>
                                 </td>
                                 <td width="30%" style="padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid black;">
-                                    <strong>TTL:</strong> <t t-esc="o.date_of_birth"/>, <t t-esc="o.date_of_birth.strftime('%d %B %Y')"/>
+                                    <strong>TTL:</strong> <t t-esc="o.date_of_birth"/>
                                 </td>
                             </tr>
                             <tr>

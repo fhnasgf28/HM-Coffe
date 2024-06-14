@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','product', 'stock', 'purchase', 'account', 'sale','mail','hr'],
+    'depends': ['base','product', 'stock', 'purchase', 'account', 'sale','mail','hr','report_xlsx'],
 
     # always loaded
     'data': [
@@ -41,6 +41,7 @@
         'views/shift_views.xml',
         'views/leave_views.xml',
         'views/reservasi_views.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [

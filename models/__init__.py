@@ -11,3 +11,4 @@ from . import payroll
 from . import shift
 from . import leave
 from . import performance_review
+from . import hr_employee

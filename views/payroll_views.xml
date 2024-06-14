@@ -19,14 +19,60 @@
         <field name="model">caffe.payroll</field>
         <field name="arch" type="xml">
             <form string="Penggajian">
-                <group>
-                    <field name="employee_id"/>
-                    <field name="date_from"/>
-                    <field name="date_to"/>
-                    <field name="total_hours"/>
-<!--                    <field name="hourly_rate"/>-->
-                    <field name="total_salary"/>
-                </group>
+                <header>
+                        <button string="Generate Payslip" name="generate_payslip" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                        <button string="Confirm" name="confirm" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'release')]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,release,confirm"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="employee_id"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="total_hours"/>
+    <!--                    <field name="hourly_rate"/>-->
+                        <field name="total_salary"/>
+                    </group>
+
+                    <group>
+                        <group name="left-group">
+                            <label for="from_date" string="Period"/>
+                            <div class="o_row">
+                                <field name="from_date" widget="daterange" options="{'related_end_date': 'to_date'}"
+                                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <span> to </span>
+                                <field name="to_date" widget="daterange" options="{'related_start_date': 'from_date'}"
+                                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </div>
+                            <field name="available_days_of_work" required="1"/>
+                        </group>
+                        </group>
+
+                <notebook>
+                    <page name="payslip" string="Payslip List">
+                        <field name="payslip_ids" >
+                            <tree string="Payroll" editable="bottom" create="0">
+                                <button name="print" id="print" icon="fa-solid fa-download" type="object" class="oe_highlight"/>
+                                <field name="name" readonly="1"/>
+                                <field name="employee_id" readonly="1"/>
+                                <field name="jabatan"/>
+                                <field name="salary" readonly="1"/>
+                                <field name="deduction" readonly="1"/>
+                                <field name="allowance" readonly="1"/>
+                                <field name="overtime" readonly="1"/>
+                                <field name="incentive"/>
+                                <field name="other_deduction"/>
+                                <field name="thp" readonly="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+                </sheet>
             </form>
         </field>
     </record>
