@@ -10,18 +10,18 @@ class Shift(models.Model):
     employee_id = fields.Many2one('caffe.pegawai', string='Pegawai', required=True)
     start_time = fields.Datetime(string='Waktu Mulai', required=True)
     end_time = fields.Datetime(string='Waktu Selesai', required=True)
-    duration = fields.Float(string='Durasi (Jam)', compute='_compute_duration', store=True)
+    duration = fields.Integer(string='Durasi (Jam)', store=True)
 
-    @api.depends('start_time', 'end_time')
-    def _compute_duration(self):
-        for shift in self:
-            if shift.start_time and shift.end_time:
-                delta = shift.end_time - shift.start_time
-                shift.duration = delta.total_seconds() / 3600
-                if shift.duration > 12:
-                    raise ValidationError("The shift duration cannot exceed 12 hours.")
-                elif shift.duration < 0:
-                    raise ValidationError("The shift duration cannot exceed 0 hours.")
+    # @api.depends('start_time', 'end_time')
+    # def _compute_duration(self):
+    #     for shift in self:
+    #         if shift.start_time and shift.end_time:
+    #             delta = shift.end_time - shift.start_time
+    #             shift.duration = delta.total_seconds() / 3600
+    #             if shift.duration > 12:
+    #                 raise ValidationError("The shift duration cannot exceed 12 hours.")
+    #             elif shift.duration < 0:
+    #                 raise ValidationError("The shift duration cannot exceed 0 hours.")
 
     @api.constrains('start_time', 'end_time')
     def check_shift_time(self):

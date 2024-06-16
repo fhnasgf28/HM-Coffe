@@ -6,8 +6,6 @@
         <field name="arch" type="xml">
             <tree string="Penggajian">
                 <field name="employee_id"/>
-                <field name="date_from"/>
-                <field name="date_to"/>
                 <field name="total_hours"/>
                 <field name="total_salary"/>
             </tree>
@@ -32,8 +30,6 @@
                     </div>
                     <group>
                         <field name="employee_id"/>
-                        <field name="date_from"/>
-                        <field name="date_to"/>
                         <field name="total_hours"/>
     <!--                    <field name="hourly_rate"/>-->
                         <field name="total_salary"/>

@@ -21,5 +21,5 @@ class GeneratePayslipWizard(models.TransientModel):
             employees = self.employee_ids
 
         for emp in employees:
-            if emp.salary == 0:
-                raise ValidationError(_("Salary for employee" + emp.name + "'Hasn't been set'"))
+            if emp.hourly_rate == 0:
+                raise ValidationError(_("Salary for employee " + emp.name + "'Hasn't been set'"))
