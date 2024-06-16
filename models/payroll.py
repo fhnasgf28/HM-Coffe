@@ -27,6 +27,7 @@ class Payroll(models.Model):
     available_days_of_work = fields.Integer(string="Jumlah Masuk",)
     from_date = fields.Date(required=1)
     to_date = fields.Date(required=1)
+    create_uid = fields.Many2one('res.users',string='Created By', default=lambda self: self.env.user and self.env.user.id or False, readonly=True)
 
     @api.depends('total_hours', 'hourly_rate')
     def _compute_total_hours(self):

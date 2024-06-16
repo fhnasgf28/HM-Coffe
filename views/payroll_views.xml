@@ -29,13 +29,16 @@
                         </h1>
                     </div>
                     <group>
+                    <group>
                         <field name="employee_id"/>
                         <field name="total_hours"/>
     <!--                    <field name="hourly_rate"/>-->
                         <field name="total_salary"/>
                     </group>
-
                     <group>
+                      <field name="company_id"/>
+                      <field name="create_uid"/>
+                    </group>
                         <group name="left-group">
                             <label for="from_date" string="Period"/>
                             <div class="o_row">
@@ -47,7 +50,7 @@
                             </div>
                             <field name="available_days_of_work" required="1"/>
                         </group>
-                        </group>
+                    </group>
 
                 <notebook>
                     <page name="payslip" string="Payslip List">
