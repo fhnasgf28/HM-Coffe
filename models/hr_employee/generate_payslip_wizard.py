@@ -1,6 +1,7 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
+
 class GeneratePayslipWizard(models.TransientModel):
     _name = 'generate.payslip.wizard'
     _description = 'Generate Payslip Wizard'
@@ -15,4 +16,10 @@ class GeneratePayslipWizard(models.TransientModel):
     available_days_of_work = fields.Integer(related='payroll_id.available_days_of_work')
 
     def confirm(self):
-        pass
+        employees = self.env['caffe.pegawai'].sudo().search([])
+        if self.employee_ids:
+            employees = self.employee_ids
+
+        for emp in employees:
+            if emp.salary == 0:
+                raise ValidationError(_("Salary for employee" + emp.name + "'Hasn't been set'"))

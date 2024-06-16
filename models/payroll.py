@@ -44,11 +44,23 @@ class Payroll(models.Model):
             payroll.total_salary = payroll.total_hours * payroll.hourly_rate
 
     #     new
+    @api.depends('payslip_ids')
     def get_amount(self):
-        pass
+        for rec in self:
+            amount = 0.0
+            for payslip in rec.payslip_ids:
+                amount += payslip.thp
 
+            rec.amount = amount
+
+    @api.depends('from_date', 'to_date')
     def _get_period(self):
-        pass
+        for rec in self:
+            period = False
+            if rec.from_date and rec.to_date:
+                period = rec.from_date.strftime('%d %b %Y') + ' - ' + rec.to_date.strftime('%d %b %Y')
+
+            rec.period = period
 
     def confirm(self):
         self.state = 'confirm'
